@@ -1,11 +1,18 @@
 $(document).ready(function () {
 
-    $(".invoice-group").on('input', '.prc', function () {
+    $(".invoice-group").on('input', function () {
         var total_sum = 0;
-        $(".invoice-group .prc").each(function () {
-            var inputVal = $(this).val();
-            if ($.isNumeric(inputVal)) {
-                total_sum += parseFloat(inputVal);
+        $(".invoice-group").each(function () {
+            var rate = $('#input_rate').val();
+
+            var qty = $('#input_qty').val();
+            total_sum = rate * qty;
+            console.log("this is rate " + rate);
+            console.log("this is qty " + qty);
+
+            //var after_multiplication = inputVal * inputVal;
+            if ($.isNumeric(total_sum)) {
+                console.log("this is total val " + total_sum);
             }
 
         });
