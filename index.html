@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+  <title>Hello, world!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section class="gst-invoice-genrator-button-section">
+    <div class="container">
+      <div class="row">
+
+        <button class="btn btn-default" type="button" value="Button Two"><i class="fa fa-floppy-o fa-3x" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+  <section class="ldp-top-container">
+    <div id="printableArea" class="container">
+      <div class="col-md-8 invoice-page">
+        <div class="row">
+          <div class="col-md-6">
+            <p id="companyName">
+              <input id="yourCompanyName" type="text" placeholder="Your Company Name" id="yourCompanyName" />
+            </p>
+            <p id="your-Name">
+              <input type="text" placeholder="Your Name" id="yourName">
+            </p>
+            <p id="company-GSTIN">
+              <input type="text" type="text" placeholder="Company GSTIN" id="companyGSTIN">
+            </p>
+
+            <p id="customer-State">
+
+              <select aria-placeholder="States" name="firstStats" id="customerStates">
+                <option value="" disabled selected>States..</option>
+                <option value="AN">Andaman &amp; Nicobar Islands</option>
+                <option value="AP">Andhra Pradesh</option>
+                <option value="AR">Arunachal Pradesh</option>
+                <option value="AS">Assam</option>
+                <option value="BI">Bihar</option>
+                <option value="CH">Chandigarh</option>
+                <option value="CG">Chhattisgarh</option>
+                <option value="DN">Dadra &amp; Nagar Haveli</option>
+                <option value="DD">Daman &amp; Diu</option>
+                <option value="DL">Delhi</option>
+                <option value="GO">Goa</option>
+                <option value="GJ">Gujarat</option>
+                <option value="HA">Haryana</option>
+                <option value="HI">Himachal Pradesh</option>
+                <option value="JK">Jammu &amp; Kashmir</option>
+                <option value="JH">Jharkhand</option>
+                <option value="KA">Karnataka</option>
+                <option value="KE">Kerala</option>
+                <option value="LK">Lakshadweep</option>
+                <option value="MP">Madhya Pradesh</option>
+                <option value="MH">Maharashtra</option>
+                <option value="MA">Manipur</option>
+                <option value="ME">Meghalaya</option>
+                <option value="MI">Mizoram</option>
+                <option value="NG">Nagaland</option>
+                <option value="OR">Orissa</option>
+                <option value="PY">Puducherry</option>
+                <option value="PJ">Punjab</option>
+                <option value="RJ">Rajasthan</option>
+                <option value="SI">Sikkim</option>
+                <option value="TN">Tamil Nadu</option>
+                <option value="TE">Telangana</option>
+                <option value="TR">Tripura</option>
+                <option value="UP">Uttar Pradesh</option>
+                <option value="UT">Uttarakhand</option>
+                <option value="WB">West Bengal</option>
+              </select>
+            </p>
+
+            <p id="customer-City">
+              <input type="text" type="text" placeholder="City Name" id="customerCity">
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p id="invoice-Name" class="">
+              <input type="text" id="invoiceName" class="" type="text" placeholder="TAX INVOICE">
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+              <b>Bill To:</b>
+            </p>
+            <p>
+              <input type="text" id="clientCompany" placeholder="Client Company">
+            </p>
+            <p>
+              <input type="text" id="clientGSTIN" placeholder="Client's GSITN">
+            </p>
+            <p>
+              <input type="text" id="clientCity" placeholder="City">
+            </p>
+            <p>
+              <select aria-placeholder="States" name="billToStats" id="billToStats">
+                <option value="" disabled selected>States..</option>
+                <option value="AN">Andaman &amp; Nicobar Islands</option>
+                <option value="AP">Andhra Pradesh</option>
+                <option value="AR">Arunachal Pradesh</option>
+                <option value="AS">Assam</option>
+                <option value="BI">Bihar</option>
+                <option value="CH">Chandigarh</option>
+                <option value="CG">Chhattisgarh</option>
+                <option value="DN">Dadra &amp; Nagar Haveli</option>
+                <option value="DD">Daman &amp; Diu</option>
+                <option value="DL">Delhi</option>
+                <option value="GO">Goa</option>
+                <option value="GJ">Gujarat</option>
+                <option value="HA">Haryana</option>
+                <option value="HI">Himachal Pradesh</option>
+                <option value="JK">Jammu &amp; Kashmir</option>
+                <option value="JH">Jharkhand</option>
+                <option value="KA">Karnataka</option>
+                <option value="KE">Kerala</option>
+                <option value="LK">Lakshadweep</option>
+                <option value="MP">Madhya Pradesh</option>
+                <option value="MH">Maharashtra</option>
+                <option value="MA">Manipur</option>
+                <option value="ME">Meghalaya</option>
+                <option value="MI">Mizoram</option>
+                <option value="NG">Nagaland</option>
+                <option value="OR">Orissa</option>
+                <option value="PY">Puducherry</option>
+                <option value="PJ">Punjab</option>
+                <option value="RJ">Rajasthan</option>
+                <option value="SI">Sikkim</option>
+                <option value="TN">Tamil Nadu</option>
+                <option value="TE">Telangana</option>
+                <option value="TR">Tripura</option>
+                <option value="UP">Uttar Pradesh</option>
+                <option value="UT">Uttarakhand</option>
+                <option value="WB">West Bengal</option>
+              </select>
+            </p>
+            <p>
+              <input type="text" id="clientCountry" placeholder="India">
+            </p>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" placeholder="Invoice#">
+              </div>
+              <div class="col-md-6">
+                <input type="text" placeholder="IN-00">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" placeholder="Invoice Date">
+              </div>
+              <div class="col-md-6">
+                <input type="text" id="invoiceDate" placeholder="Select Date">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" placeholder="Due Date">
+              </div>
+              <div class="col-md-6">
+                <input type="text" id="invoiceDueDate" placeholder="Select Date">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Item Description</th>
+                  <th id="qty" scope="col">Qty</th>
+                  <th id="rate" scope="col">Rate</th>
+                  <th id="sgst" scope="col">SGST</th>
+                  <th id="cgst" scope="col">CGST</th>
+                  <th id="cess" scope="col">CESS</th>
+                  <th id="ammount" colspan="2" scope="col">Ammount</th>
+                </tr>
+              </thead>
+              <form>
+
+                <tbody id="itemsBody">
+                  <tr id="firstRow">
+                    <th scope="row">
+                      <textarea name="" id="" placeholder="Name Description.."></textarea>
+                      <br>
+                      <input type="text" placeholder="HSN/SAC">
+                    </th>
+                    <td class="invoice-group">
+                      <input name="tableInput" size="4" id="quantity" type="text" class="prc" placeholder="2">
+                    </td>
+                    <td class="invoice-group">
+                      <input name="tableInput" size="4" id="rate" type="text" class="prc" placeholder="2">
+                    </td>
+                    <td class="invoice-group">
+                      <input type="text" size="4" class="prc" placeholder="20">
+                    </td>
+                    <td class="invoice-group">
+                      <input type="text" size="4" class="prc" placeholder="20">
+                    </td>
+                    <td class="invoice-group">
+                      <input type="text" size="4" class="prc" placeholder="0">
+                    </td>
+                    <td>
+                      <output type="text" id="dispay_ammount" size="4"> </output>
+                    </td>
+                    <td><button class='btnDelete btn btn-xs'><i class="fa fa-window-close" aria-hidden="true"></i></button></td>
+                  </tr>
+
+                </tbody>
+              </form>
+            </table>
+            <div id="menifulationButtons">
+              <button id="addLineItem" class="btn btn-sm btn-primary">+ add Line Item</button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-6">
+            <table class="table" id="totalTable">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+
+                </tr>
+              </thead>
+              <tbody id="itemsTotllBody">
+                <tr>
+                  <th scope="row">
+                    <input placeholder="Sub Total" />
+                  </th>
+
+                  <td><output id="sub_total_2nd">00.00</output></td>
+                </tr>
+                <tr>
+
+                  <th scope="row">
+                    <input id="totalCGST" placeholder="CGST (10%)" />
+                  </th>
+
+                  <td>20.0</td>
+                </tr>
+                <tr id="totalSGSTTR">
+
+                  <th scope="row">
+                    <input id="totalSGST" placeholder="SGST (10%)" />
+                  </th>
+
+                  <td>20.0</td>
+
+                </tr>
+                <tr class="thead-light">
+                  <th scope="row">
+                    <input placeholder="Total" />
+                  </th>
+                  <td>20.0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <p>
+              <input type="text" placeholder="Notes:">
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <p>
+              <textarea cols="80" type="text" placeholder="It was great doing business with you."></textarea>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <input type="text" placeholder="Terms & Conditions:">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <textarea cols="80" placeholder="Please make the payment by the due date..."></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+
+    </div>
+    <button class="btn btn-default" onclick="printDiv('printableArea')" type="button"><i class="fa fa-print fa-3x"
+        aria-hidden="true"></i></button>
+  </section>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+  body {
+      background: #e1e3dd;
+  }
+
+  input {
+      border: none;
+  }
+
+  textarea {
+      border: none;
+  }
+
+  .invoice-page {
+      /* font-size: 15px; */
+      background: white;
+      padding: 30px;
+  }
+
+  .gst-invoice-genrator-button-section {
+      padding: 30px;
+  }
+
+  #invoice-Name {
+      font-size: 30px;
+      font-weight: bold;
+      padding-top: 30px;
+      padding-bottom: 30px;
+  }
+
+  ::-webkit-input-placeholder {
+      /* Edge */
+      padding: 8px;
+  }
+
+  :-ms-input-placeholder {
+      /* Internet Explorer */
+      padding: 8px;
+  }
+
+  ::placeholder {
+      padding: 8px;
+  }
+
+  select {
+      border: none;
+      color: #999;
+  }
+
+  option {
+      color: black;
+      background-color: #ffe5c2;
+
+  }
+
+  .btnDelete {
+      display: none;
+  }
+
+  /* Prints CSS Code */
+
+  @media screen,
+  print {
+      .btnDelete {
+          display: none;
+      }
+  }
