@@ -1,11 +1,11 @@
 $(document).ready(function () {
 
+    // calculations code
     $(".invoice-group").on('input', function () {
         var total_sum = 0;
         $(".invoice-group").each(function () {
-            var rate = $('#input_rate').val();
-
-            var qty = $('#input_qty').val();
+            var rate = $('.input_rate').val();
+            var qty = $('.input_qty').val();
             total_sum = rate * qty;
             console.log("this is rate " + rate);
             console.log("this is qty " + qty);
@@ -101,23 +101,31 @@ $(document).ready(function () {
                                                 <br>
                                                 <input type="text" placeholder="HSN/SAC">
                                             </th>
-                                             <td>
-                                                <input size="4" type="text" placeholder="2">
+                                             <td class="invoice-group">
+                                                <input size="4"
+                                                type="text"
+                                                id="input_qty"
+                                                placeholder="2" >
                                             </td>
-                                            <td>
-                                                <input size="4" type="text" placeholder="2">
+                                            <td class="invoice-group">
+                                                <input size="4"
+                                                type="text"
+                                                id="input_rate"
+                                                placeholder="2" >
                                             </td>
-                                            <td>
+                                            <td class="invoice-group">
                                                 <input type="text" size="4" placeholder="20">
                                             </td>
-                                            <td>
+                                            <td class="invoice-group">
                                                 <input type="text" size="4" placeholder="20">
                                             </td>
-                                            <td>
+                                            < td class="invoice-group">
                                                 <input type="text" size="4" placeholder="0">
                                             </td>
                                             <td>
-                                                <input type="text" size="4" placeholder="0">
+                                                <output type="text"
+                                                    id="dispay_ammount"
+                                                    size="4">00</output> 
                                             </td>
                                             <td><button style="display:block" class='btnDelete btn btn-xs'><i class="fa fa-window-close" aria-hidden="true"></i></button></td>
                                             </tr>

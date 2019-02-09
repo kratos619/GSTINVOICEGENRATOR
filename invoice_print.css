@@ -1,0 +1,21 @@
+@media print {
+    .top-container {
+        display: none;
+    }
+
+    #add_row {
+        display: none;
+    }
+
+    textarea {
+        border: none;
+    }
+
+    .btnDelete {
+        display: none;
+    }
+
+    #deletebuttontd {
+        display: none;
+    }
+}
