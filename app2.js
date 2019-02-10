@@ -1,15 +1,14 @@
 'use strict';
 $(document).ready(function () {
-    // $("input").focus(function () {
-    //     $(this).css("border", "1px solid");
-    //     $(this).css("background", "#ffe5c2");
-    // });
-    // $("input").focusout(function () {
-    //     $(this).css("border", "none");
-    //     $(this).css("background", "none");
-    // });
+    $("input").focus(function () {
 
-    $('#yourCompany').val('adjashdjashdajshj')
+        $(this).css("background", "#ffe5c2");
+    });
+    $("input").focusout(function () {
+        $(this).css("background", "none");
+    });
+
+    // $('#yourCompany').val('adjashdjashdajshj')
     $('#invioiceDate').datetimepicker({
         format: 'MM-DD-YYYY',
         minDate: new Date()
@@ -33,7 +32,7 @@ $(document).ready(function () {
         var secondSel = $('#states2').val();
 
         if (firstSel !== secondSel) {
-            console.log('do changes');
+
             $('.igsttHead').show();
             $('.cesstHead').show();
             $('.tdigst').show();
@@ -49,7 +48,7 @@ $(document).ready(function () {
                 cal_igst_cess();
             });
         } else {
-            console.log('nochange');
+
             $('.igsttHead').hide();
             $('.cesstHead').hide();
             $('.tdigst').hide();
@@ -71,13 +70,13 @@ $(document).ready(function () {
 
 
     $('#add_row').click(function () {
-        var blank_row = $('#addr1');
+        var blank_row = $('#addr0');
         var table_body = $('#tab_logic');
         blank_row.clone().find("input").val("").end()
             .appendTo(table_body);
 
         var rowCount = $('#tab_logic tr').length;
-        console.log("tableRow " + rowCount);
+
         if (rowCount > 1) {
             $('.btnDelete').show();
         }
@@ -86,7 +85,7 @@ $(document).ready(function () {
 
     $('#itemsBody').on('click', '.btnDelete', function () {
         var rowCount = $('#tab_logic tr').length;
-        console.log("tableRow After Delete " + rowCount);
+
         if (rowCount <= 3) {
             $('.btnDelete').hide();
         }
@@ -110,8 +109,6 @@ $(document).ready(function () {
 function calc() {
     $('#tab_logic tbody tr').each(function (i, element) {
         var html = $(this).html();
-        //       console.log(html);
-
         if (html != '') {
             var qty = $(this).find('.qty').val();
             var price = $(this).find('.price').val();
@@ -138,21 +135,16 @@ function calc() {
 function cal_igst_cess() {
     $('#tab_logic tbody tr').each(function (i, element) {
         var html = $(this).html();
-        //       console.log(html);
 
         if (html != '') {
             var qty = $(this).find('.qty').val();
             var price = $(this).find('.price').val();
             var igst = $(this).find('.igst').val();
-            //var cgst = $(this).find('.igst').val();
             var cess = $(this).find('.cess').val();
             $(this).find('.total').val(qty * price);
             var inline_tottal = qty * price;
             var cess_total = inline_tottal * (cess / 100);
             var igst_total = inline_tottal * (igst / 100);
-
-            console.log(cess + igst);
-            console.log(inline_tottal);
 
             var final_inline_tax_total = cess_total + igst_total + inline_tottal;
             $(this).find('.inline_tax').val(final_inline_tax_total.toFixed(2));
@@ -160,7 +152,7 @@ function cal_igst_cess() {
             $(this)
                 .find('.inline_tax_amount')
                 .val(tax_amt_new_inline.toFixed(2));
-            console.log(true);
+
             calc_total();
         }
     });
@@ -170,15 +162,15 @@ function calc_total() {
     var total = 0;
     var tax_inline_total = 0;
     $('.total').each(function () {
-        total += parseInt($(this).val());
+        total += parseFloat($(this).val());
     });
-    $('#sub_total').val(total.toFixed(2));
-    console.log(total);
+    $('#sub_total').val(parseFloat(total).toFixed(2));
+
     $('.inline_tax').each(function () {
-        tax_inline_total += parseInt($(this).val());
+        tax_inline_total += parseFloat($(this).val());
     });
-    $('#total_amount').val(tax_inline_total.toFixed(2));
-    console.log(tax_inline_total);
+    $('#total_amount').val(parseFloat(tax_inline_total).toFixed(2));
+
 }
 
 //chekbox treams and conditions
@@ -232,7 +224,6 @@ function numberValidation(e) {
         $(e).val(0);
     }
 }
-
 
 
 
@@ -342,7 +333,6 @@ $('.saveBtn').on('click', function () {
     } else {
         status = true;
     }
-    console.log(status);
 
 
     if (!re.test(clientAddress)) {
@@ -394,10 +384,9 @@ $('.saveBtn').on('click', function () {
          "clientCompanyName": "${clientCompanyName}",
          "clientAddress": "${clientAddress}",
          "clientCountryName": "${clientCountryName}"}`);
-        console.log(newObj_);
+
 
     } else {
-        console.log("fields Required");
 
     }
 })
@@ -416,15 +405,240 @@ function fillData(details) {
     return true;
 }
 
-fillData({
-    "yourCompany": "Gaurav",
-    "yourName": "jkashkdhsakj",
-    "invoiceTitle": "ajsdlaskjdlk",
-    "ycity": "asdadas",
-    "ycountry": "alkdsaidsp",
-    "clientCompanyName": "iiiiiii",
-    "clientCity": "alskdalsdjasd",
-    "clientAddress": "qqwwww121",
-    "clientCountryName": "indiaa",
-    "clientName": "dfsdfsdf"
-})
+// fillData({
+//     "yourCompany": "Gaurav",
+//     "yourName": "jkashkdhsakj",
+//     "invoiceTitle": "ajsdlaskjdlk",
+//     "ycity": "asdadas",
+//     "ycountry": "alkdsaidsp",
+//     "clientCompanyName": "iiiiiii",
+//     "clientCity": "alskdalsdjasd",
+//     "clientAddress": "qqwwww121",
+//     "clientCountryName": "indiaa",
+//     "clientName": "dfsdfsdf"
+// })
+
+//validaation on focus
+
+document
+    .getElementById("yourCompany")
+    .addEventListener("blur", valadateCompanyName);
+
+function valadateCompanyName() {
+    const name = document.getElementById("yourCompany");
+    const re = /[A-Za-z]/;
+    console.log(name);
+    if (!re.test(name.value)) {
+        console.log('not validate');
+        // $('#companyName').append(`<small style="color:red">ERROR</small>`)
+        $("#yourCompany").after(
+            `<small class="yourCompany" style="color:red">Enter Valid Company Name</small>`
+        );
+        setTimeout(() => {
+            $(".yourCompany").remove();
+        }, 2000);
+    } else {
+        console.log('validate');
+    }
+}
+
+document
+    .getElementById("yourName")
+    .addEventListener("blur", yourName);
+
+function yourName() {
+    const name = document.getElementById("yourName");
+    const re = /[A-Za-z]/;
+    console.log(name);
+    if (!re.test(name.value)) {
+        console.log('not validate');
+        // $('#companyName').append(`<small style="color:red">ERROR</small>`)
+        $("#yourName").after(
+            `<small class="yourName" style="color:red">Enter Valid Name</small>`
+        );
+        setTimeout(() => {
+            $(".yourName").remove();
+        }, 2000);
+    } else {
+        console.log('validate');
+    }
+}
+
+document
+    .getElementById("invoiceTitle")
+    .addEventListener("blur", invoiceTitle);
+
+function invoiceTitle() {
+    const name = document.getElementById("invoiceTitle");
+    const re = /[A-Za-z]/;
+    console.log(name);
+    if (!re.test(name.value)) {
+        console.log('not validate');
+        // $('#companyName').append(`<small style="color:red">ERROR</small>`)
+        $("#invoiceTitle").after(
+            `<small class="invoiceTitle" style="color:red">Enter Valid Name</small>`
+        );
+        setTimeout(() => {
+            $(".invoiceTitle").remove();
+        }, 2000);
+    } else {
+        console.log('validate');
+    }
+}
+
+
+document
+    .getElementById("ycity")
+    .addEventListener("blur", ycity);
+
+function ycity() {
+    const name = document.getElementById("ycity");
+    const re = /[A-Za-z]/;
+    console.log(name);
+    if (!re.test(name.value)) {
+        console.log('not validate');
+        // $('#companyName').append(`<small style="color:red">ERROR</small>`)
+        $("#ycity").after(
+            `<small class="ycity" style="color:red">Enter Valid Name</small>`
+        );
+        setTimeout(() => {
+            $(".ycity").remove();
+        }, 2000);
+    } else {
+        console.log('validate');
+    }
+}
+
+document
+    .getElementById("ycountry")
+    .addEventListener("blur", ycountry);
+
+function ycity() {
+    const name = document.getElementById("ycountry");
+    const re = /[A-Za-z]/;
+    console.log(name);
+    if (!re.test(name.value)) {
+        console.log('not validate');
+        // $('#companyName').append(`<small style="color:red">ERROR</small>`)
+        $("#ycountry").after(
+            `<small class="ycountry" style="color:red">Enter Valid Name</small>`
+        );
+        setTimeout(() => {
+            $(".ycountry").remove();
+        }, 2000);
+    } else {
+        console.log('validate');
+    }
+}
+
+document
+    .getElementById("invoiceId")
+    .addEventListener("blur", invoiceId);
+
+function ycity() {
+    const name = document.getElementById("invoiceId");
+    const re = /[A-Za-z]/;
+    console.log(name);
+    if (!re.test(name.value)) {
+        console.log('not validate');
+        // $('#companyName').append(`<small style="color:red">ERROR</small>`)
+        $("#invoiceId").after(
+            `<small class="invoiceId" style="color:red">Enter Valid Name</small>`
+        );
+        setTimeout(() => {
+            $(".invoiceId").remove();
+        }, 2000);
+    } else {
+        console.log('validate');
+    }
+}
+
+
+document
+    .getElementById("clientName")
+    .addEventListener("blur", clientName);
+
+function clientName() {
+    const name = document.getElementById("clientName");
+    const re = /[A-Za-z]/;
+    console.log(name);
+    if (!re.test(name.value)) {
+        console.log('not validate');
+        // $('#companyName').append(`<small style="color:red">ERROR</small>`)
+        $("#clientName").after(
+            `<small class="clientName" style="color:red">Enter Valid Name</small>`
+        );
+        setTimeout(() => {
+            $(".clientName").remove();
+        }, 2000);
+    } else {
+        console.log('validate');
+    }
+}
+
+document
+    .getElementById("clientAddress")
+    .addEventListener("blur", clientAddress);
+
+function clientAddress() {
+    const name = document.getElementById("clientAddress");
+    const re = /[A-Za-z]/;
+    console.log(name);
+    if (!re.test(name.value)) {
+        console.log('not validate');
+        // $('#companyName').append(`<small style="color:red">ERROR</small>`)
+        $("#clientAddress").after(
+            `<small class="clientAddress" style="color:red">Enter Valid Name</small>`
+        );
+        setTimeout(() => {
+            $(".clientAddress").remove();
+        }, 2000);
+    } else {
+        console.log('validate');
+    }
+}
+
+
+document
+    .getElementById("clientCountryName")
+    .addEventListener("blur", clientCountryName);
+
+function clientCountryName() {
+    const name = document.getElementById("clientCountryName");
+    const re = /[A-Za-z]/;
+    console.log(name);
+    if (!re.test(name.value)) {
+        console.log('not validate');
+        // $('#companyName').append(`<small style="color:red">ERROR</small>`)
+        $("#clientCountryName").after(
+            `<small class="clientCountryName" style="color:red">Enter Valid Name</small>`
+        );
+        setTimeout(() => {
+            $(".clientCountryName").remove();
+        }, 2000);
+    } else {
+        console.log('validate');
+    }
+}
+
+document
+    .getElementById("clientCompanyName")
+    .addEventListener("blur", clientCompanyName);
+
+function clientCompanyName() {
+    const name = document.getElementById("clientCompanyName");
+    const re = /[A-Za-z]/;
+    console.log(name);
+    if (!re.test(name.value)) {
+        console.log('not validate');
+        // $('#companyName').append(`<small style="color:red">ERROR</small>`)
+        $("#clientCompanyName").after(
+            `<small class="clientCompanyName" style="color:red">Enter Valid Name</small>`
+        );
+        setTimeout(() => {
+            $(".clientCompanyName").remove();
+        }, 2000);
+    } else {
+        console.log('validate');
+    }
+}
