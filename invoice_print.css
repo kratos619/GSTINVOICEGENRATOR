@@ -1,4 +1,11 @@
 @media print {
+    @page {
+        size: auto;
+        /* auto is the initial value */
+        margin: 10px;
+        /* this affects the margin in the printer settings */
+    }
+
     .top-container {
         display: none;
     }
@@ -17,5 +24,13 @@
 
     #deletebuttontd {
         display: none;
+    }
+
+    #termsAndConditionCheckboxarea {
+        display: none;
+    }
+
+    select {
+        border: none;
     }
 }

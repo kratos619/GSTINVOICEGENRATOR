@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="invoice_print.css">
 </head>
 <style>
+    select {
+border: none;
+}
     table{
         border: none;
     }
@@ -94,7 +97,8 @@ input{
                         <th></th>
                     </tr>
                     <tr>
-                        <td> <input type="text" id="yourCompany" placeholder="Your Company" /> </td>
+                        <td>
+                            <input type="text" id="yourCompany" placeholder="Your Company" /> </td>
                         <td></td>
                     </tr>
                     <tr>
@@ -253,58 +257,101 @@ input{
                                     <th class="text-center">Tax Amount</th>
                                 </tr>
                             </thead>
-                            <form id="calculaton_part">
 
-                                <tbody id="itemsBody">
-                                    <tr id='addr0'>
-                                        <td>1</td>
-                                        <td>
-                                            <textarea type="text" name='product[]' placeholder='Enter Product Name'
-                                                class="" /></textarea>
-                                            <br>
-                                            <input type="text" name='product[]' size="4" placeholder='HSN/HAC' class="" />
-                                        </td>
-                                        <td>
-                                            <input size="2" type="number" name='qty[]' placeholder='Enter Qty' class="qty"
-                                                step="0" onblur="numberValidation(this)" min="0" />
-                                        </td>
-                                        <td>
-                                            <input type="number" name='price[]' onblur="numberValidation(this)"
-                                                placeholder='00.00' class="price" step="0.00" min="0" />
-                                        </td>
-                                        <td class="tdsgst">
-                                            <input type="number" onblur="numberValidation(this)" name='sgst[]'
-                                                placeholder='00.00' class="sgst" step="0.00" min="0" />
-                                        </td>
-                                        <td class="tdcgst">
-                                            <input type="number" onblur="numberValidation(this)" name='cgst[]'
-                                                placeholder='00.00' class="cgst" step="0.00" min="0" />
-                                        </td>
-                                        <td class="tdigst">
-                                            <input type="number" onblur="numberValidation(this)" name='igst[]'
-                                                placeholder='00.00' class="igst" step="0.00" min="0" />
-                                        </td>
-                                        <td class="tdcess">
-                                            <input type="number" name='cess[]' onblur="numberValidation(this)"
-                                                placeholder='Enter Unit Price' class="cess" step="0.00" min="0" />
-                                        </td>
-                                        <td>
-                                            <input type="number" min="0" name='total[]' placeholder='0.00' class="total"
-                                                readonly />
-                                            <input type="hidden" min="0" name='inline_tax[]' placeholder='0.00' class="inline_tax"
-                                                readonly />
-                                        </td>
-                                        <td>
-                                            <input type="number" min="0" name='inline_tax_amount[]' placeholder='0.00'
-                                                class=" inline_tax_amount" readonly="" />
-                                        </td>
-                                        <td id="deletebuttontd">
-                                            <button style="display:block" class='btnDelete btn btn-xs'>Delete</button>
-                                        </td>
-                                    </tr>
-                                    <tr id='addr1'></tr>
-                                </tbody>
-                            </form>
+                            <tbody id="itemsBody">
+                                <tr id='addr0'>
+                                    <td>#</td>
+                                    <td>
+                                        <textarea type="text" name='product[]' placeholder='Enter Product Name' class="" /></textarea>
+                                        <br>
+                                        <input type="text" name='hsnhac[]' size="5" placeholder='HSN/HAC' class="" />
+                                    </td>
+                                    <td>
+                                        <input size="2" type="number" name='qty[]' placeholder='00.00' class="qty" step="0"
+                                            onblur="numberValidation(this)" min="0" />
+                                    </td>
+                                    <td>
+                                        <input type="number" name='price[]' onblur="numberValidation(this)" placeholder='00.00'
+                                            class="price" step="0.00" min="0" />
+                                    </td>
+                                    <td class="tdsgst">
+                                        <input type="number" onblur="numberValidation(this)" name='sgst[]' placeholder='00.00'
+                                            class="sgst" step="0.00" min="0" />
+                                    </td>
+                                    <td class="tdcgst">
+                                        <input type="number" onblur="numberValidation(this)" name='cgst[]' placeholder='00.00'
+                                            class="cgst" step="0.00" min="0" />
+                                    </td>
+                                    <td class="tdigst">
+                                        <input type="number" onblur="numberValidation(this)" name='igst[]' placeholder='00.00'
+                                            class="igst" step="0.00" min="0" />
+                                    </td>
+                                    <td class="tdcess">
+                                        <input type="number" name='cess[]' onblur="numberValidation(this)" placeholder='Enter Unit Price'
+                                            class="cess" step="0.00" min="0" />
+                                    </td>
+                                    <td>
+                                        <input type="number" min="0" name='total[]' placeholder='0.00' class="total"
+                                            readonly />
+                                        <input type="hidden" min="0" name='inline_tax[]' placeholder='0.00' class="inline_tax"
+                                            readonly />
+                                    </td>
+                                    <td>
+                                        <input type="number" min="0" name='inline_tax_amount[]' placeholder='0.00'
+                                            class="inline_tax_amount" readonly="" />
+                                    </td>
+                                    <td id="deletebuttontd">
+                                        <button class='btnDelete btn btn-xs'>Delete</button>
+                                    </td>
+                                </tr>
+                                <tr id='addr1'>
+                                    <td>#</td>
+                                    <td>
+                                        <textarea type="text" name='product[]' placeholder='Enter Product Name' class="" /></textarea>
+                                        <br>
+                                        <input type="text" name='hsnhac[]' size="5" placeholder='HSN/HAC' class="" />
+                                    </td>
+                                    <td>
+                                        <input size="2" type="number" name='qty[]' placeholder='00.00' class="qty" step="0"
+                                            onblur="numberValidation(this)" min="0" />
+                                    </td>
+                                    <td>
+                                        <input type="number" name='price[]' onblur="numberValidation(this)" placeholder='00.00'
+                                            class="price" step="0.00" min="0" />
+                                    </td>
+                                    <td class="tdsgst">
+                                        <input type="number" onblur="numberValidation(this)" name='sgst[]' placeholder='00.00'
+                                            class="sgst" step="0.00" min="0" />
+                                    </td>
+                                    <td class="tdcgst">
+                                        <input type="number" onblur="numberValidation(this)" name='cgst[]' placeholder='00.00'
+                                            class="cgst" step="0.00" min="0" />
+                                    </td>
+                                    <td class="tdigst">
+                                        <input type="number" onblur="numberValidation(this)" name='igst[]' placeholder='00.00'
+                                            class="igst" step="0.00" min="0" />
+                                    </td>
+                                    <td class="tdcess">
+                                        <input type="number" name='cess[]' onblur="numberValidation(this)" placeholder='Enter Unit Price'
+                                            class="cess" step="0.00" min="0" />
+                                    </td>
+                                    <td>
+                                        <input type="number" min="0" name='total[]' placeholder='0.00' class="total"
+                                            readonly />
+                                        <input type="hidden" min="0" name='inline_tax[]' placeholder='0.00' class="inline_tax"
+                                            readonly />
+                                    </td>
+                                    <td>
+                                        <input type="number" min="0" name='inline_tax_amount[]' placeholder='0.00'
+                                            class="inline_tax_amount" readonly="" />
+                                    </td>
+                                    <td id="deletebuttontd">
+                                        <button class='btnDelete btn btn-xs'>Delete</button>
+                                    </td>
+                                </tr>
+                                <!-- <tr id='addr1'></tr> -->
+                            </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -331,6 +378,103 @@ input{
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <strong>
+                        <p>
+                            <input size="80" type="text" placeholder="notes">
+                        </p>
+                    </strong>
+                    <p>
+                        <textarea style="width:100%" type="text" placeholder="notes"></textarea>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <strong>
+                        <p>
+                            <input size="80" type="text" placeholder="Terms And Condition">
+                        </p>
+                    </strong>
+                    <div id="termsAndConditionCheckboxarea">
+
+                        <p>
+                            <div class="checkbox">
+                                <label>
+                                    <input id="cpcheckbox" type="checkbox"> Credit Period
+                                </label>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="checkbox">
+                                <label>
+                                    <input id="ptcheckbox" type="checkbox"> Payment Terms
+                                </label>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="checkbox">
+                                <label>
+                                    <input id="modepaymentcheckbox" type="checkbox"> mode of Payment
+                                </label>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="checkbox">
+                                <label>
+                                    <input id="bdcheckbox" type="checkbox"> Bank details are
+                                </label>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="checkbox">
+                                <label>
+                                    <input id="intrestAftercheckbox" type="checkbox"> Interest After Credit Period
+                                </label>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="checkbox">
+                                <label>
+                                    <input id="discountcheckbox" type="checkbox"> Discount on Invoice
+                                </label>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="checkbox">
+                                <label>
+                                    <input id="laborChargCheckbox" type="checkbox"> Labor Charges
+                                </label>
+                            </div>
+                        </p>
+                    </div>
+                    <div class="tearmsAndConditionApper">
+                        <p>
+                            <input style="display:none" size="70" type="text" class="condition1">
+                        </p>
+                        <p>
+                            <input style="display:none" size="70" type="text" class="condition2">
+                        </p>
+                        <p>
+                            <input style="display:none" size="70" type="text" class="condition3">
+                        </p>
+                        <p>
+                            <input style="display:none" size="70" type="text" class="condition4">
+                        </p>
+                        <p>
+                            <input style="display:none" size="70" type="text" class="condition5">
+                        </p>
+
+                        <p>
+                            <input style="display:none" size="70" type="text" class="condition6">
+                        </p>
+                        <p>
+                            <input style="display:none" size="70" type="text" class="condition7">
+                        </p>
                     </div>
                 </div>
             </div>

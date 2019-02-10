@@ -28,9 +28,6 @@ $(document).ready(function () {
     $('.tdigst').hide();
     $('.tdcess').hide();
 
-    var states1 = '';
-    var states2 = '';
-
     $('#states1 , #states2').on('change', function (e) {
         var firstSel = $('#states1').val();
         var secondSel = $('#states2').val();
@@ -70,18 +67,29 @@ $(document).ready(function () {
         }
     });
 
-    var i = 1;
+    $('.btnDelete').hide();
+
+
     $('#add_row').click(function () {
-        var b = i - 1;
-        $('#addr' + i)
-            .html($('#addr' + b).html())
-            .find('td:first-child')
-            .html(i + 1);
-        $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
-        i++;
+        var blank_row = $('#addr1');
+        var table_body = $('#tab_logic');
+        blank_row.clone().find("input").val("").end()
+            .appendTo(table_body);
+
+        var rowCount = $('#tab_logic tr').length;
+        console.log("tableRow " + rowCount);
+        if (rowCount > 1) {
+            $('.btnDelete').show();
+        }
+
     });
 
     $('#itemsBody').on('click', '.btnDelete', function () {
+        var rowCount = $('#tab_logic tr').length;
+        console.log("tableRow After Delete " + rowCount);
+        if (rowCount <= 3) {
+            $('.btnDelete').hide();
+        }
         $(this)
             .closest('tr')
             .remove();
@@ -114,17 +122,13 @@ function calc() {
             var inline_tottal = qty * price;
             var sgst_totl = inline_tottal * (sgst / 100);
             var cgst_total = inline_tottal * (cgst / 100);
-            console.log(cgst + sgst);
-            console.log(inline_tottal);
+            //console.log(cgst + sgst);
+            // console.log(inline_tottal);
             var final_inline_tax_total = sgst_totl + cgst_total + inline_tottal;
-            $(this)
-                .find('.inline_tax')
-                .val(final_inline_tax_total.toFixed(2));
+            $(this).find('.inline_tax').val(final_inline_tax_total.toFixed(2));
+            console.log(final_inline_tax_total);
             var tax_amt_new_inline = sgst_totl + cgst_total;
-            $(this)
-                .find('.inline_tax_amount')
-                .val(tax_amt_new_inline);
-            console.log(true);
+            $(this).find('.inline_tax_amount').val(tax_amt_new_inline.toFixed(2));
             calc_total();
         }
     });
@@ -137,22 +141,12 @@ function cal_igst_cess() {
         //       console.log(html);
 
         if (html != '') {
-            var qty = $(this)
-                .find('.qty')
-                .val();
-            var price = $(this)
-                .find('.price')
-                .val();
-            var igst = $(this)
-                .find('.igst')
-                .val();
+            var qty = $(this).find('.qty').val();
+            var price = $(this).find('.price').val();
+            var igst = $(this).find('.igst').val();
             //var cgst = $(this).find('.igst').val();
-            var cess = $(this)
-                .find('.cess')
-                .val();
-            $(this)
-                .find('.total')
-                .val(qty * price);
+            var cess = $(this).find('.cess').val();
+            $(this).find('.total').val(qty * price);
             var inline_tottal = qty * price;
             var cess_total = inline_tottal * (cess / 100);
             var igst_total = inline_tottal * (igst / 100);
@@ -161,13 +155,11 @@ function cal_igst_cess() {
             console.log(inline_tottal);
 
             var final_inline_tax_total = cess_total + igst_total + inline_tottal;
-            $(this)
-                .find('.inline_tax')
-                .val(final_inline_tax_total.toFixed(2));
+            $(this).find('.inline_tax').val(final_inline_tax_total.toFixed(2));
             var tax_amt_new_inline = cess_total + igst_total;
             $(this)
                 .find('.inline_tax_amount')
-                .val(tax_amt_new_inline);
+                .val(tax_amt_new_inline.toFixed(2));
             console.log(true);
             calc_total();
         }
@@ -180,12 +172,58 @@ function calc_total() {
     $('.total').each(function () {
         total += parseInt($(this).val());
     });
+    $('#sub_total').val(total.toFixed(2));
+    console.log(total);
     $('.inline_tax').each(function () {
         tax_inline_total += parseInt($(this).val());
     });
-    $('#sub_total').val(total.toFixed(2));
     $('#total_amount').val(tax_inline_total.toFixed(2));
+    console.log(tax_inline_total);
 }
+
+//chekbox treams and conditions
+$('#cpcheckbox').click(function () {
+    $(".condition1").toggle(this.checked)
+    $('.condition1').val('Full payment should be made in (Days) of the Invoice Date.')
+    $('.condition1').select();
+});
+$('#ptcheckbox').click(function () {
+    $(".condition2").toggle(this.checked)
+    $('.condition2').val('100% advance, 50% advance/rest against delivery.')
+    $('.condition2').select();
+});
+$('#modepaymentcheckbox').click(function () {
+    $(".condition4").toggle(this.checked)
+    $('.condition4').val(` Mode of Payment should be (Cash, Bank Transfer, Cheque)
+Cheque Should be in Favor of (empty box)
+`)
+    $('.condition4').select();
+});
+$('#bdcheckbox').click(function () {
+    $(".condition3").toggle(this.checked)
+    $('.condition3').val(` IFSC Code, Account Name, Type of Account, Type of account(saving/current)`)
+    $('.condition3').select();
+});
+
+$('#intrestAftercheckbox').click(function () {
+    $(".condition5").toggle(this.checked)
+    $('.condition5').val(` (()) % of Interest will be charged on Invoice Amount After Credit Period.`)
+    $('.condition5').select();
+});
+$('#discountcheckbox').click(function () {
+    $(".condition6").toggle(this.checked)
+    $('.condition6').val(` ((Percent)) Discount will be offered, In case of Full payment.`)
+    $('.condition6').select();
+});
+$('#laborChargCheckbox').click(function () {
+    $(".condition7").toggle(this.checked)
+    $('.condition7').val(` Labor Charges incurred for Loading unloading will be borne by (Buyer / Seller).`)
+    $('.condition7').select();
+});
+
+
+
+//function validations on save Buttons Validation  areaa
 
 function numberValidation(e) {
     var number = $(e).val();
@@ -196,14 +234,14 @@ function numberValidation(e) {
 }
 
 
-//function validations on save Buttons
+
+
 $('.saveBtn').on('click', function () {
     var yourCompany = $('#yourCompany').val();
     var yourName = $('#yourName').val();
     var invoiceTitle = $('#invoiceTitle').val();
     var ycity = $('#ycity').val();
     var states1 = $('#states1').val();
-
     var ycountry = $('#ycountry').val();
     //var invoiceId = $('#invoiceId').val();
     //  var invioiceDate = $('#invioiceDate').val();
@@ -213,25 +251,24 @@ $('.saveBtn').on('click', function () {
     var clientAddress = $('#clientAddress').val();
     //var states2 = $('#states2').val();
     var clientCountryName = $('#clientCountryName').val();
-
-
     const re = /[A-Za-z]/;
 
     let status = false;
 
     if (!re.test(yourCompany)) {
+        status = false;
         $("#yourCompany").after(
             `<small class="yourCompany" style="color:red">error</small>`
         );
         setTimeout(() => {
             $('.yourCompany').remove();
         }, 3000);
-
     } else {
         status = true;
     }
 
     if (!re.test(yourName)) {
+        status = false;
         $("#yourName").after(
             `<small class="yourName" style="color:red">error</small>`
         );
@@ -243,6 +280,7 @@ $('.saveBtn').on('click', function () {
         status = true;
     }
     if (!re.test(invoiceTitle)) {
+        status = false;
         $("#invoiceTitle").after(
             `<small class="invoiceTitle" style="color:red">error</small>`
         );
@@ -254,6 +292,7 @@ $('.saveBtn').on('click', function () {
         status = true;
     }
     if (!re.test(ycity)) {
+        status = false;
         $("#ycity").after(
             `<small class="ycity" style="color:red">error</small>`
         );
@@ -266,6 +305,7 @@ $('.saveBtn').on('click', function () {
     }
 
     if (!re.test(ycountry)) {
+        status = false;
         $("#ycountry").after(
             `<small class="ycountry" style="color:red">error</small>`
         );
@@ -278,6 +318,7 @@ $('.saveBtn').on('click', function () {
     }
 
     if (!re.test(clientName)) {
+        status = false;
         $("#clientName").after(
             `<small class="clientName" style="color:red">error</small>`
         );
@@ -290,6 +331,7 @@ $('.saveBtn').on('click', function () {
     }
 
     if (!re.test(clientCompanyName)) {
+        status = false;
         $("#clientCompanyName").after(
             `<small class="clientCompanyName" style="color:red">error</small>`
         );
@@ -300,7 +342,11 @@ $('.saveBtn').on('click', function () {
     } else {
         status = true;
     }
+    console.log(status);
+
+
     if (!re.test(clientAddress)) {
+        status = false;
         $("#clientAddress").after(
             `<small class="clientAddress" style="color:red">error</small>`
         );
@@ -311,7 +357,9 @@ $('.saveBtn').on('click', function () {
     } else {
         status = true;
     }
+
     if (!re.test(clientCountryName)) {
+        status = false;
         $("#clientCountryName").after(
             `<small class="clientCountryName" style="color:red">error</small>`
         );
@@ -323,19 +371,19 @@ $('.saveBtn').on('click', function () {
         status = true;
     }
 
-    if (status == true) {
+    if (status === true) {
         // create json
-        let obj = {
-            "yourCompany": yourCompany,
-            "yourName": yourName,
-            "invoiceTitle": invoiceTitle,
-            "ycity": ycity,
-            "ycountry": ycountry,
-            "clientName": clientName,
-            "clientCompanyName": clientCompanyName,
-            "clientAddress": clientAddress,
-            "clientCountryName": clientCountryName
-        }
+        // let obj = {
+        //     "yourCompany": yourCompany,
+        //     "yourName": yourName,
+        //     "invoiceTitle": invoiceTitle,
+        //     "ycity": ycity,
+        //     "ycountry": ycountry,
+        //     "clientName": clientName,
+        //     "clientCompanyName": clientCompanyName,
+        //     "clientAddress": clientAddress,
+        //     "clientCountryName": clientCountryName
+        // }
 
         var newObj_ = JSON.parse(`{ "yourCompany":"${yourCompany}" ,
         "yourName": "${yourName}",
@@ -347,6 +395,9 @@ $('.saveBtn').on('click', function () {
          "clientAddress": "${clientAddress}",
          "clientCountryName": "${clientCountryName}"}`);
         console.log(newObj_);
+
+    } else {
+        console.log("fields Required");
 
     }
 })
@@ -374,5 +425,6 @@ fillData({
     "clientCompanyName": "iiiiiii",
     "clientCity": "alskdalsdjasd",
     "clientAddress": "qqwwww121",
-    "clientCountryName": "indiaa"
+    "clientCountryName": "indiaa",
+    "clientName": "dfsdfsdf"
 })
