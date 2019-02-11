@@ -88,6 +88,7 @@ input{
             </p>
         </div>
     </div>
+  <form  id="convertTOJSon">
     <div class="container">
         <div id="printableArea" class="col-md-9">
             <div class="row">
@@ -98,21 +99,21 @@ input{
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" id="yourCompany" placeholder="Your Company" /> </td>
+                            <input type="text" name="yourCompany" id="yourCompany" placeholder="Your Company" /> </td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td><input type="text" id="yourName" placeholder="Your Name" /></td>
+                        <td><input type="text" id="yourName" name="yourName" placeholder="Your Name" /></td>
                         <td>
-                            <input id="invoiceTitle" type="text" style="font-size:30px; text-align:right" placeholder="Invoice" />
+                            <input id="invoiceTitle" name="invoiceTitle" type="text" style="font-size:30px; text-align:right" placeholder="Invoice" />
                         </td>
                     </tr>
                     <tr>
-                        <td><input type="text" id="ycity" placeholder="City" /></td>
+                        <td><input type="text" name="ycity" id="ycity" placeholder="City" /></td>
                     </tr>
                     <tr>
                         <td>
-                            <select aria-placeholder="States" name="billToStats" id="states1">
+                            <select name="states1" aria-placeholder="States" name="billToStats" id="states1">
                                 <option value="" disabled selected>States..</option>
                                 <option value="AN">Andaman &amp; Nicobar Islands</option>
                                 <option value="AP">Andhra Pradesh</option>
@@ -155,7 +156,7 @@ input{
 
                     </tr>
                     <tr>
-                        <td><input id="ycountry" type="text" placeholder="Country" placeholder="India" value="India" /></td>
+                        <td><input id="ycountry" name="ycountry" type="text" placeholder="Country" placeholder="India" value="India" /></td>
                     </tr>
                 </table>
             </div>
@@ -169,32 +170,32 @@ input{
                             <tbody>
                                 <tr>
                                     <td> <strong>Invaoice#</strong> </td>
-                                    <td><input type="text" id="invoiceId" placeholder="#112"></td>
+                                    <td><input type="text" id="invoiceId" name="invoiceId" placeholder="#112"></td>
                                 </tr>
                                 <tr>
                                     <td><strong>Invoice Date</strong></td>
-                                    <td><input class="pull-right" type="text" id="invioiceDate" /></td>
+                                    <td><input class="pull-right" type="text" id="invioiceDate" name="invioiceDate" /></td>
                                 </tr>
                                 <tr>
                                     <td><strong>Due Date</strong> </td>
-                                    <td><input class="pull-right" type="text" id="invoiceDueDate"></td>
+                                    <td><input class="pull-right" type="text" name="invoiceDueDate" id="invoiceDueDate"></td>
                                 </tr>
                             </tbody>
                         </table>
                     </li>
 
                     <li>
-                        <input placeholder="Your Clients's Name" type="text" id="clientName">
+                        <input placeholder="Your Clients's Name" type="text" name="clientName" id="clientName">
                     </li>
                     <li>
-                        <input placeholder="Your Clients's Company Name" id="clientCompanyName" type="text">
+                        <input placeholder="Your Clients's Company Name" name="clientCompanyName" id="clientCompanyName" type="text">
                     </li>
 
                     <li>
-                        <input placeholder="Your Clients's Address" type="text" id="clientAddress">
+                        <input placeholder="Your Clients's Address" type="text" id="clientAddress" name="clientAddress">
                     </li>
                     <li>
-                        <select aria-placeholder="States" name="customer" id="states2">
+                        <select aria-placeholder="States" name="customer" name="states2" id="states2">
                             <option value="" disabled selected>States..</option>
                             <option value="AN">Andaman &amp; Nicobar Islands</option>
                             <option value="AP">Andhra Pradesh</option>
@@ -235,7 +236,7 @@ input{
                         </select>
                     </li>
                     <li>
-                        <input placeholder="Country" id="clientCountryName" value="India" type="text">
+                        <input placeholder="Country" name="clientCountryName" id="clientCountryName" value="India" type="text">
                     </li>
                 </ul>
             </div>
@@ -262,42 +263,43 @@ input{
                                 <tr id='addr0'>
                                     <td>#</td>
                                     <td>
-                                        <textarea type="text" name='product[]' placeholder='Enter Product Name' class="" /></textarea>
+                                        <textarea type="text" name='items[product]' placeholder='Enter Product Name' class=""/></textarea>
                                         <br>
-                                        <input type="text" name='hsnhac[]' placeholder='HSN/HAC' class="" />
+                                        <input type="text" name='items[hsnhac]' placeholder='HSN/HAC' class="" />
                                     </td>
                                     <td>
-                                        <input size="2" type="number" name='qty[]' placeholder='00.00' class="qty" step="0"
+                                        <input size="2" type="number" name='items[qty]' placeholder='00.00' class="qty" step="0"
                                             onblur="numberValidation(this)" min="0" />
                                     </td>
                                     <td>
-                                        <input type="number" name='price[]' onblur="numberValidation(this)" placeholder='00.00'
+                                        <input type="number" name='items[price]' onblur="numberValidation(this)" placeholder='00.00'
                                             class="price" step="0.00" min="0" />
                                     </td>
                                     <td class="tdsgst">
-                                        <input type="number" onblur="numberValidation(this)" name='sgst[]' placeholder='00.00'
+                                        <input type="number" onblur="numberValidation(this)" name='items[sgst]' placeholder='00.00'
                                             class="sgst" step="0.00" min="0" />
                                     </td>
                                     <td class="tdcgst">
-                                        <input type="number" onblur="numberValidation(this)" name='cgst[]' placeholder='00.00'
+                                        <input type="number" onblur="numberValidation(this)" name='items[cgst]' placeholder='00.00'
                                             class="cgst" step="0.00" min="0" />
                                     </td>
                                     <td class="tdigst">
-                                        <input type="number" onblur="numberValidation(this)" name='igst[]' placeholder='00.00'
+                                        <input type="number" onblur="numberValidation(this)" name='items[igst]' placeholder='00.00'
                                             class="igst" step="0.00" min="0" />
                                     </td>
                                     <td class="tdcess">
-                                        <input type="number" name='cess[]' onblur="numberValidation(this)" placeholder='Enter Unit Price'
+                                    </td>
+                                        <input type="number" name='items[cess]' onblur="numberValidation(this)" placeholder='Enter Unit Price'
                                             class="cess" step="0.00" min="0" />
                                     </td>
                                     <td>
-                                        <input type="number" min="0" name='total[]' placeholder='0.00' class="total"
+                                        <input type="number" min="0" name='total' placeholder='0.00' class="total"
                                             readonly />
-                                        <input type="hidden" min="0" name='inline_tax[]' placeholder='0.00' class="inline_tax"
+                                        <input type="hidden" min="0" name='inline_tax' placeholder='0.00' class="inline_tax"
                                             readonly />
                                     </td>
                                     <td>
-                                        <input type="number" min="0" name='inline_tax_amount[]' placeholder='0.00'
+                                        <input type="number" min="0" name='inline_tax_amount' placeholder='0.00'
                                             class="inline_tax_amount" readonly="" />
                                     </td>
                                     <td id="deletebuttontd">
@@ -324,13 +326,13 @@ input{
                                     <th class="text-center">Sub Total</th>
                                     <td class="text-center">
                                         <span><Strong>Rs.</Strong> &nbsp;</span><input type="number" name='sub_total'
-                                            placeholder='0.00' class="" id="sub_total" readonly />
+                                            placeholder='0.00' class="" name="sub_total" id="sub_total" readonly />
                                     </td>
                                 </tr>
                                 <tr>
                                     <th class="text-center">Grand Total</th>
                                     <td class="text-center"><span><Strong>Rs.</Strong> &nbsp;</span> <input type="number"
-                                            name='total_amount' id="total_amount" placeholder='0.00' class="" readonly /></td>
+                                            name='total_amount' id="total_amount" name="total_amount" placeholder='0.00' class="" readonly /></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -345,7 +347,7 @@ input{
                         </p>
                     </strong>
                     <p>
-                        <textarea style="width:100%" type="text" placeholder="notes"></textarea>
+                        <textarea style="width:100%" name="notes" type="text" placeholder="notes"></textarea>
                     </p>
                 </div>
             </div>
@@ -410,26 +412,26 @@ input{
                     </div>
                     <div class="tearmsAndConditionApper">
                         <p>
-                            <input style="display:none" size="100" type="text" class="condition1">
+                            <input style="display:none" name="condition1" size="100" type="text" class="condition1">
                         </p>
                         <p>
-                            <input style="display:none" size="100" type="text" class="condition2">
+                            <input style="display:none" name="condition2" size="100" type="text" class="condition2">
                         </p>
                         <p>
-                            <input style="display:none" size="100" type="text" class="condition3">
+                            <input style="display:none" size="100" type="text" name="condition3" class="condition3">
                         </p>
                         <p>
-                            <input style="display:none" size="100" type="text" class="condition4">
+                            <input style="display:none" size="100" type="text" name="condition4" class="condition4">
                         </p>
                         <p>
-                            <input style="display:none" size="100" type="text" class="condition5">
+                            <input style="display:none" size="100" type="text" name="condition5" class="condition5">
                         </p>
 
                         <p>
-                            <input style="display:none" size="100" type="text" class="condition6">
+                            <input style="display:none" size="100" type="text" name="condition6" class="condition6">
                         </p>
                         <p>
-                            <input style="display:none" size="100" type="text" class="condition7">
+                            <input style="display:none" size="100" type="text" name="condition7" class="condition7">
                         </p>
                     </div>
                 </div>
@@ -439,6 +441,10 @@ input{
 
         </div>
     </div>
+<button class="btn btn-default btn3 saveBtn" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    Save</button>  
+</form>
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
@@ -456,6 +462,25 @@ input{
             document.body.innerHTML = printContents;
             document.body.innerHTML = originalContents;
         }
+$("form").submit(function(e) {
+  e.preventDefault();
+  var data = $(this).serializeArray();
+  console.log(data);
+
+//     jQuery.each(array, function () {
+//         json[this.name] = this.value || '';
+//     });
+  // $.post("/path/to/server", data);     
+  //return json;
+ // console.log(json);
+   //event.preventDefault();
+    // var data = {
+    //     "name": this.name.value,
+    //     "age": this.age.value
+    // };
+
+    // console.log(data);
+});
     </script>
 </body>
 

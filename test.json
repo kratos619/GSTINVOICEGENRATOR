@@ -1,0 +1,36 @@
+{
+    "yourname": "adasd",
+    "yourComoanyName": "asda",
+    "city": "asda",
+    "state1": "mh",
+    "country": "asdasd",
+    "customerName": "asdsad",
+    "customerCompanyName": "asdasd",
+    "customerCity": "adasd",
+    "state2": "asdasd",
+    "customerCuntry": "asdasda",
+    "dueDate": "2223/22",
+    "invoice": "id",
+    "invoiceDate": "2/323",
+    "itmes": [{
+            "productName": "asdasd",
+            "qty": "11",
+            "rate": "22",
+            "sgst": "22",
+            "cgst": "33",
+            "total": "33",
+            "taxValue": "44"
+        },
+        {
+            "productName": "asdasd",
+            "qty": "11",
+            "rate": "22",
+            "sgst": "22",
+            "cgst": "33",
+            "total": "33",
+            "taxValue": "44"
+        }
+    ],
+    "toal": "23232",
+    "grandTotal": "434343"
+}
