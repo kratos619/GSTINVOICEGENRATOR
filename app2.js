@@ -513,7 +513,7 @@ document
     .getElementById("ycountry")
     .addEventListener("blur", ycountry);
 
-function ycity() {
+function ycountry() {
     const name = document.getElementById("ycountry");
     const re = /[A-Za-z]/;
     console.log(name);
@@ -535,7 +535,7 @@ document
     .getElementById("invoiceId")
     .addEventListener("blur", invoiceId);
 
-function ycity() {
+function invoiceId() {
     const name = document.getElementById("invoiceId");
     const re = /[A-Za-z]/;
     console.log(name);
